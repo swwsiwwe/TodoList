@@ -1,3 +1,4 @@
+//为了不使RecyclerView的checkbox产生混乱,于是新创一个adapter,只用来展示数据。
 package com.example.todolist;
 
 import android.content.Context;
