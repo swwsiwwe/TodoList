@@ -1,6 +1,5 @@
 package com.example.todolist;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -14,13 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.List;
-
 import static android.content.Context.MODE_PRIVATE;
-
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHolder> {
     private int i;
@@ -32,13 +27,13 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
         CardView cardview;
         ImageView todoListImage;
         TextView todoList;
-        public ViewHolder(View view){
+        private ViewHolder(View view){
             super(view);
             cardview = (CardView)view;
-            todoListImage = (ImageView)view.findViewById(R.id.important);
-            todoList = (TextView)view.findViewById(R.id.todolist);
-            delete = (ImageButton)view.findViewById(R.id.delete);
-            checkBox = (CheckBox)view.findViewById(R.id.remember);
+            todoListImage = view.findViewById(R.id.important);
+            todoList = view.findViewById(R.id.todolist);
+            delete = view.findViewById(R.id.delete);
+            checkBox = view.findViewById(R.id.remember);
         }
     }
     public TodoListAdapter(List<TodoList> todolists){
@@ -95,7 +90,6 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TodoList todoList = mTodoList.get(position);
         holder.todoList.setText(todoList.getText());
-        //holder.todoListImage.setImageResource(todoList.getId());
         Glide.with(mContext).load(todoList.getId()).into(holder.todoListImage);
         holder.checkBox.setChecked(todoList.getCheck());
     }

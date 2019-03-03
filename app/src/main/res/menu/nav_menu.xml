@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_peace"
+            android:title="闲散计划" />
+        <item
+            android:id="@+id/nav_normal"
+            android:title="一般计划"/>
+        <item
+            android:id="@+id/nav_warning"
+            android:title="紧急计划"/>
+        <item
+            android:id="@+id/nav_back"
+            android:title="查看所有"/>
+    </group>
+</menu>
