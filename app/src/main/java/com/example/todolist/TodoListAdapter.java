@@ -78,9 +78,9 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
                 int position = holder.getAdapterPosition();
                 i=pref.getInt("cnt",-1);
                 int p=i-position;
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("data",MODE_PRIVATE).edit();
-                editor.putBoolean("check"+p,isChecked);
-                editor.apply();
+                    SharedPreferences.Editor editor = mContext.getSharedPreferences("data",MODE_PRIVATE).edit();
+                    editor.putBoolean("check"+p,isChecked);
+                    editor.apply();
             }
         });
         return holder;

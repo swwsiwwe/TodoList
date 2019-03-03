@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //初始化适配器
         initTodoList();
         //recyclerView
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new TodoListAdapter(todoList);
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     case R.id.nav_back : {
                         initTodoList();
-                        adapter.notifyDataSetChanged();
+                        recyclerView.setAdapter(adapter);
                         break;
                     }
                 }
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<=j;i++){
             if(pref.getInt(i+"image",0) == id){
                 TodoList todo = new TodoList(pref.getString(i+"",""),pref.getInt((i)+"image",0),
-                        pref.getBoolean("check"+i,false));
+                        false);
                 todoList.add(todo);
             }
         }
@@ -163,10 +163,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void fresh(int id) {
         inittTodoList(id);
-        SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
-        int j = pref.getInt("cnt",-1);
-        adapter.notifyItemRangeRemoved(0,j);
-        adapter.notifyDataSetChanged();
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        Todo adapter1 = new Todo(todoList);
+        recyclerView.setAdapter(adapter1);
     }
     private void select(String str,int id){
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
