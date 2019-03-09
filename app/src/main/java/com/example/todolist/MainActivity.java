@@ -134,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("data",MODE_PRIVATE);
         todoList.clear();
         int j = pref.getInt("cnt",-1);
-        for(;j>=0;j--){
-            if(!"".equals(pref.getString(""+j,""))){
-                TodoList todo = new TodoList(pref.getString(""+j,""),pref.getInt((j)+"image",0),
-                        pref.getBoolean("check"+j,false));
+        for(int i = 0;i<=j;i++){
+            if(!"".equals(pref.getString(""+i,""))){
+                TodoList todo = new TodoList(pref.getString(""+i,""),pref.getInt((i)+"image",0),
+                        pref.getBoolean("check"+i,false));
                 todoList.add(todo);
             }
         }
