@@ -58,7 +58,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
                 SharedPreferences pref =mContext.getSharedPreferences("data",MODE_PRIVATE);
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("data",MODE_PRIVATE).edit();
                 i=pref.getInt("cnt",-1);
-                int p = i-position;
+                int p = position;
                 for(;p<i;p++){
                     editor.putString(""+(p),pref.getString((p+1)+"",""));
                     editor.putInt((p)+"image",pref.getInt((p+1)+"image",0));
@@ -77,7 +77,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ViewHo
                 SharedPreferences pref =mContext.getSharedPreferences("data",MODE_PRIVATE);
                 int position = holder.getAdapterPosition();
                 i=pref.getInt("cnt",-1);
-                int p=i-position;
+                int p=position;
                     SharedPreferences.Editor editor = mContext.getSharedPreferences("data",MODE_PRIVATE).edit();
                     editor.putBoolean("check"+p,isChecked);
                     editor.apply();
